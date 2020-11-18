@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style>
+        .page{
+        max-width: 60%;
+         margin: auto;
+                  background-color:#f1f1f1;
+         padding:10px;
+
+        }
+        .center{
+        text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+<!--<form id="mainform" method="post" action="">-->
+<!--    {% csrf_token %}-->
+  <h3>Question 4 of 10:</h3>
+  <h4>Q4. How many days are there in the month of February in a leap year?</h4>
+  <input type="radio" id="option1" name="answer" value="30 days">
+  <label>30 days</label><br><br>
+  <input type="radio" id="option2" name="answer" value="28 days">
+  <label>28 days</label><br><br>
+  <input type="radio" id="option3" name="answer" value="29 days">
+  <label>29 days</label><br><br>
+  <input type="radio" id="option4" name="answer" value="31 days">
+  <label>31 days</label><br><br>
+  <input type="submit" value="Submit Answer" onclick="displayRadioValue()"/><br>
+<!--    <b style="color:blue;" id="selectedcolorname"></b>-->
+<!--</form><br>-->
+  <br> <div id="result"></div>
+    <div class="center">
+<!--    <button><a href="/questions">Start the Quiz</a></button>-->
+    <br><button id="bt1" onclick="location.href = '/question5'">Next Question></button>
+        <div id="time" style="float:right">Timeout:</div>
+</div>
+    <script>
+        function displayRadioValue() {
+            if(option3.checked){
+            var ele = document.getElementsByName('answer');
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+                document.getElementById("result").innerHTML
+                        = "Correct! <br><br> The Selected Answer is: "+ele[i].value;
+            document.getElementById("bt1").style.visibility = "visible";
+            }
+            }
+            else if(option2.checked){
+            var ele = document.getElementsByName('answer');
+
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+                document.getElementById("result").innerHTML
+                        = "Not Correct! <br><br> Try again";
+            document.getElementById("bt1").style.visibility = "hidden";
+            }
+            }
+                        else if(option1.checked){
+            var ele = document.getElementsByName('answer');
+
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+                document.getElementById("result").innerHTML
+                        = "Not Correct! <br><br> Try again";
+            document.getElementById("bt1").style.visibility = "hidden";
+            }
+            }
+                       else if(option4.checked){
+            var ele = document.getElementsByName('answer');
+
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+                document.getElementById("result").innerHTML
+                        = "Not Correct! <br><br> Try again";
+            document.getElementById("bt1").style.visibility = "hidden";
+            }
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
+{% endblock content %}
